@@ -92,8 +92,10 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 				end
 			end
 			if info.isElite then
+				poiButton.UnderlayAtlas:SetSize(34, 34)
 				poiButton.UnderlayAtlas:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
 				poiButton.UnderlayAtlas:SetTexCoord(0.0839844, 0.150391, 0.75, 0.816406)
+				poiButton.UnderlayAtlas:SetPoint("CENTER", 0, -1)
 			end
 		end
 	elseif style == POIButtonUtil.Style.AreaPOI then
