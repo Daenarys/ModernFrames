@@ -5,9 +5,6 @@ end
 
 QuestScrollFrame.BorderFrame.TopDetail:SetAlpha(0)
 QuestMapFrame.DetailsFrame.BorderFrame.TopDetail:SetAlpha(0)
-QuestMapFrame.SettingsDropdown:Hide()
-
-ApplySearchBox(QuestScrollFrame.SearchBox)
 
 hooksecurefunc(QuestScrollFrame, 'UpdateBackground', function(self)
 	self.Background:SetAtlas("QuestLogBackground")

@@ -1,125 +1,14 @@
 if not _G.ObjectiveTrackerFrame then return end
 
-ObjectiveTrackerFrame:SetWidth(235)
-ObjectiveTrackerFrame.Header:Hide()
-
-local trackers = {
-	_G.AchievementObjectiveTracker,
-	_G.AdventureObjectiveTracker,
-	_G.BonusObjectiveTracker,
-	_G.CampaignQuestObjectiveTracker,
-	_G.MonthlyActivitiesObjectiveTracker,
-	_G.ProfessionsRecipeTracker,
-	_G.QuestObjectiveTracker,
-	_G.ScenarioObjectiveTracker,
-	_G.UIWidgetObjectiveTracker,
-	_G.WorldQuestObjectiveTracker
-}
-
-for _, tracker in pairs(trackers) do
-	tracker:SetWidth(235)
-	tracker.ContentsFrame:SetPoint("LEFT", -10, 0)
-	tracker.ContentsFrame:SetPoint("RIGHT", 10, 0)
-	tracker.Header:SetSize(235, 25)
-	tracker.Header.Background:SetAtlas("Objective-Header", true)
-	tracker.Header.Background:ClearAllPoints()
-	tracker.Header.Background:SetPoint("TOPLEFT", -29, 14)
-	tracker.Header.Text:ClearAllPoints()
-	tracker.Header.Text:SetPoint("LEFT", 4, -1)
-
-	hooksecurefunc(tracker, "GetProgressBar", function(self, key)
-		local progressBar = self.usedProgressBars[key]
-		local bar = progressBar and progressBar.Bar
-
-		if not bar.BorderMid then
-			bar:ClearAllPoints()
-			bar:SetPoint("LEFT", -1, 0)
-		end
-	end)
-end
-
-if ScenarioObjectiveTracker.MawBuffsBlock.Container then
-	ScenarioObjectiveTracker.MawBuffsBlock.Container:SetPoint("TOPRIGHT", -12, 1)
-end
-
-hooksecurefunc(ObjectiveTrackerFrame, "AnchorSelectionFrame", function(self)
-	self.Selection:SetPoint("TOPLEFT", -17, -38)
-end)
-
-hooksecurefunc(ObjectiveTrackerFrame, "Update", function()
-	for _, tracker in pairs(trackers) do
-		tracker.Header.MinimizeButton:SetSize(15, 14)
-		tracker.Header.MinimizeButton:ClearAllPoints()
-		tracker.Header.MinimizeButton:SetPoint("RIGHT")
-		tracker.Header.MinimizeButton:SetHighlightAtlas("UI-QuestTrackerButton-Highlight", "ADD")
-		if tracker:IsCollapsed() then
-			tracker.Header.MinimizeButton:SetNormalTexture("Interface\\Buttons\\QuestTrackerButtons")
-			tracker.Header.MinimizeButton:GetNormalTexture():SetTexCoord(0.273438, 0.390625, 0.765625, 0.984375)
-			tracker.Header.MinimizeButton:SetPushedTexture("Interface\\Buttons\\QuestTrackerButtons")
-			tracker.Header.MinimizeButton:GetPushedTexture():SetTexCoord(0.273438, 0.390625, 0.515625, 0.734375)
-		else
-			tracker.Header.MinimizeButton:SetNormalTexture("Interface\\Buttons\\QuestTrackerButtons")
-			tracker.Header.MinimizeButton:GetNormalTexture():SetTexCoord(0.140625, 0.257812, 0.546875, 0.765625)
-			tracker.Header.MinimizeButton:SetPushedTexture("Interface\\Buttons\\QuestTrackerButtons")
-			tracker.Header.MinimizeButton:GetPushedTexture():SetTexCoord(0.0078125, 0.125, 0.546875, 0.765625)
-		end
-	end
-
-	for _, child in next, { ScenarioObjectiveTracker.ContentsFrame:GetChildren() } do
-		if child == ScenarioObjectiveTracker.ChallengeModeBlock then
-			child:SetPoint("RIGHT", -12, 0)
-		else
-			child:SetPoint("LEFT", 31, 0)
-		end
-	end
-end)
-
-hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateStageBlock", function(block)
-	if (block.NormalBG:GetAtlas() == "evergreen-scenario-trackerheader") then
-		block.NormalBG:SetAtlas("ScenarioTrackerToast", true)
-		block.NormalBG:ClearAllPoints()
-		block.NormalBG:SetPoint("TOPLEFT", -11, -2)
-	elseif (block.NormalBG:GetAtlas() == "thewarwithin-scenario-trackerheader") then
-		block.NormalBG:SetWidth(257)
-		block.NormalBG:ClearAllPoints()
-		block.NormalBG:SetPoint("TOPLEFT", -18, 1)
-	elseif (block.NormalBG:GetAtlas() == "delves-scenario-TrackerHeader") then
-		block.NormalBG:SetWidth(258)
-		block.NormalBG:ClearAllPoints()
-		block.NormalBG:SetPoint("TOPLEFT", -18, 1)
+hooksecurefunc(ObjectiveTrackerFrame, "Update", function(self)
+	self.Header.MinimizeButton:SetNormalTexture("Interface/QuestFrame/QuestTracker")
+	self.Header.MinimizeButton:SetPushedTexture("Interface/QuestFrame/QuestTracker")
+	self.Header.MinimizeButton:SetHighlightAtlas("UI-QuestTrackerButton-Highlight", "ADD")
+	if self:IsCollapsed() then
+		self.Header.MinimizeButton:GetNormalTexture():SetTexCoord(0.933594, 0.96875, 0.242188, 0.316406)
+		self.Header.MinimizeButton:GetPushedTexture():SetTexCoord(0.894531, 0.929688, 0.324219, 0.398438)
 	else
-		block.NormalBG:ClearAllPoints()
-		block.NormalBG:SetPoint("TOPLEFT", -11, -2)
+		self.Header.MinimizeButton:GetNormalTexture():SetTexCoord(0.9375, 0.972656, 0.121094, 0.195312)
+		self.Header.MinimizeButton:GetPushedTexture():SetTexCoord(0.894531, 0.929688, 0.242188, 0.316406)
 	end
-	block.FinalBG:SetAtlas("ScenarioTrackerToast-FinalFiligree", true)
-	block.FinalBG:ClearAllPoints()
-	block.FinalBG:SetPoint("TOPLEFT", -7, -6)
-	block.Stage:ClearAllPoints()
-	block.Stage:SetPoint("TOPLEFT", 4, -19)
-end)
-
-hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateWidgetRegistration", function(block)
-	if block.WidgetContainer.widgetFrames then
-		for _, widgetFrame in pairs(block.WidgetContainer.widgetFrames) do
-			if widgetFrame.Frame then
-				if (widgetFrame.Frame:GetAtlas() == "evergreen-scenario-frame") then
-					block.WidgetContainer:ClearAllPoints()
-					block.WidgetContainer:SetPoint("TOPLEFT", -18, 1)
-				elseif (widgetFrame.Frame:GetAtlas() == "thewarwithin-scenario-frame") then
-					block.WidgetContainer:ClearAllPoints()
-					block.WidgetContainer:SetPoint("TOPLEFT", -18, 1)
-				elseif (widgetFrame.Frame:GetAtlas() == "delves-scenario-frame") then
-					block.WidgetContainer:ClearAllPoints()
-					block.WidgetContainer:SetPoint("TOPLEFT", -18, 1)
-				else
-					block.WidgetContainer:ClearAllPoints()
-					block.WidgetContainer:SetPoint("TOPLEFT", -11, -2)
-				end
-			end
-		end
-	end
-end)
-
-hooksecurefunc(ObjectiveTrackerUIWidgetContainer, "AttachToBlockAndShow", function(self)
-	self:SetPoint("TOP", -12, 0)
 end)

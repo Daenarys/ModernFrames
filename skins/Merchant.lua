@@ -1,20 +1,5 @@
 if not _G.MerchantFrame then return end
 
-ApplyCloseButton(MerchantFrameCloseButton)
-
-MerchantFrame.PortraitContainer.CircleMask:Hide()
-
-MerchantFramePortrait:SetSize(61, 61)
-MerchantFramePortrait:ClearAllPoints()
-MerchantFramePortrait:SetPoint("TOPLEFT", -6, 8)
-
-MerchantFrame.TitleContainer:ClearAllPoints()
-MerchantFrame.TitleContainer:SetPoint("TOPLEFT", MerchantFrame, "TOPLEFT", 58, 0)
-MerchantFrame.TitleContainer:SetPoint("TOPRIGHT", MerchantFrame, "TOPRIGHT", -58, 0)
-
-ApplyTitleBg(MerchantFrame)
-ApplyNineSlicePortrait(MerchantFrame)
-
 MerchantFrameBottomLeftBorder:SetSize(256, 61)
 MerchantFrameBottomLeftBorder:SetTexture("Interface\\MerchantFrame\\UI-Merchant-BottomBorder")
 MerchantFrameBottomLeftBorder:SetTexCoord(0, 1, 0, 0.4765625)
@@ -31,19 +16,6 @@ if (MerchantRepairText == nil) then
 	MerchantFrame:CreateFontString("MerchantRepairText", "BORDER", "GameFontHighlightSmall")
 	MerchantRepairText:SetText(REPAIR_ITEMS)
 end
-
-MerchantFrameTab2:ClearAllPoints()
-MerchantFrameTab2:SetPoint("LEFT", MerchantFrameTab1, "RIGHT", -16, 0)
-
-for i = 1, 2 do
-	ApplyBottomTab(_G['MerchantFrameTab'..i])
-
-	_G["MerchantFrameTab"..i]:HookScript("OnShow", function(self)
-		self:SetWidth(40 + self:GetFontString():GetStringWidth())
-	end)
-end
-
-ApplyDropDown(MerchantFrame.FilterDropdown)
 
 hooksecurefunc("MerchantFrame_UpdateMerchantInfo", function()
 	MerchantBuyBackItemItemButton.UndoFrame:Hide()
@@ -69,23 +41,12 @@ hooksecurefunc("MerchantFrame_UpdateMerchantInfo", function()
 	MerchantBuyBackItemName:SetPoint("LEFT", MerchantBuyBackItemSlotTexture, "RIGHT", -5, 10)
 	MerchantBuyBackItemNameFrame:SetSize(128, 64)
 
-	MerchantRepairItemButton.Icon:SetTexture("Interface\\MerchantFrame\\UI-Merchant-RepairIcons")
-	MerchantRepairItemButton.Icon:SetTexCoord(0, 0.28125, 0, 0.5625)
 	MerchantRepairItemButton:DisableDrawLayer("BACKGROUND")
-	MerchantRepairAllButton.Icon:SetTexture("Interface\\MerchantFrame\\UI-Merchant-RepairIcons")
-	MerchantRepairAllButton.Icon:SetTexCoord(0.28125, 0.5625, 0, 0.5625)
 	MerchantRepairAllButton:DisableDrawLayer("BACKGROUND")
 	MerchantGuildBankRepairButton:SetSize(32, 32)
 	MerchantGuildBankRepairButton:ClearAllPoints()
 	MerchantGuildBankRepairButton:SetPoint("LEFT", MerchantRepairAllButton, "RIGHT", 4, 0)
 	MerchantGuildBankRepairButton:DisableDrawLayer("BACKGROUND")
-	MerchantGuildBankRepairButton.Icon:SetTexture("Interface\\MerchantFrame\\UI-Merchant-RepairIcons")
-	MerchantGuildBankRepairButton.Icon:SetTexCoord(0.5625, 0.84375, 0, 0.5625)
-
-	if ContainerFrame1MoneyFrame then
-		ContainerFrame1MoneyFrame:ClearAllPoints()
-		ContainerFrame1MoneyFrame:SetPoint("TOPRIGHT", ContainerFrame1, "TOPRIGHT", -2, -272)
-	end
 end)
 
 hooksecurefunc("MerchantFrame_UpdateBuybackInfo", function()
