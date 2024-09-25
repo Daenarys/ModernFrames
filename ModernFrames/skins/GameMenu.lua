@@ -15,9 +15,6 @@ GameMenuFrame:HookScript("OnShow", function(self)
 			button:SetNormalFontObject("GameFontHighlight")
 			button:SetHighlightFontObject("GameFontHighlight")
 			button:SetDisabledFontObject("GameFontDisable")
-			button:SetHighlightTexture("Interface\\Buttons\\UI-Panel-Button-Highlight", "ADD")
-			button:GetHighlightTexture():SetTexCoord(0, 0.625, 0, 0.6875)
-			button:SetPushedTextOffset(1.57, -1.57)
 			button.IsSkinned = true
 		end
 	end
