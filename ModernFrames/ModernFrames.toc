@@ -3,7 +3,7 @@
 ## Title: Modern Frames
 ## Notes: Improves the default UI Frames
 ## Author: luckfore
-## Version: 1.01
+## Version: 1.02
 ## OptionalDeps: SexyMap
 skins\AddOnList.lua
 skins\Character.lua
