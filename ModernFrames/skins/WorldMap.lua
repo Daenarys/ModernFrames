@@ -207,6 +207,21 @@ hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
 			self.HighlightTexture:SetSize(32, 32)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.258789, 0.321289, 0.12793, 0.19043)
+		-- caves
+		elseif (self.Texture:GetAtlas() == "CaveUnderground-Down") then
+			self.Texture:SetSize(25, 25)
+			self.Texture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+			self.Texture:SetTexCoord(0.000976562, 0.0634766, 0.12793, 0.19043)
+			self.HighlightTexture:SetSize(25, 25)
+			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+			self.HighlightTexture:SetTexCoord(0.000976562, 0.0634766, 0.12793, 0.19043)
+		elseif (self.Texture:GetAtlas() == "CaveUnderground-Up") then
+			self.Texture:SetSize(25, 25)
+			self.Texture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+			self.Texture:SetTexCoord(0.000976562, 0.0634766, 0.192383, 0.254883)
+			self.HighlightTexture:SetSize(25, 25)
+			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+			self.HighlightTexture:SetTexCoord(0.000976562, 0.0634766, 0.192383, 0.254883)
 		end
 	end
 end)
