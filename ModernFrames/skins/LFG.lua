@@ -58,7 +58,7 @@ hooksecurefunc('LFGListGroupDataDisplayEnumerate_Update', function(self, numPlay
 				icon:SetAlpha(disabled and 0.5 or 0.70);
 				icon.RoleIconWithBackground:Hide()
 				icon.RoleIcon:Show()
-				icon.RoleIcon:SetSize(17, 17)
+				icon.RoleIcon:SetSize(18, 18)
 				icon.RoleIcon:SetAtlas(LFG_LIST_GROUP_DATA_ATLASES[role], false)
 				icon.ClassCircle:Hide()
 				iconIndex = iconIndex - 1;
