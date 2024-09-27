@@ -4,6 +4,7 @@ hooksecurefunc('LFGDungeonReadyPopup_Update', function()
 	local proposalExists, id, typeID, subtypeID, name, backgroundTexture, role, hasResponded, totalEncounters, completedEncounters, numMembers, isLeader, _, _, isSilent = GetLFGProposal()
 	
 	if ( subtypeID == LFG_SUBTYPEID_SCENARIO ) then
+		LFGDungeonReadyDialog.background:SetDrawLayer("BACKGROUND")
 		if ( LFG_IsHeroicScenario(id) ) then
 			LFGDungeonReadyDialog.background:SetTexture("Interface\\LFGFrame\\UI-LFG-BACKGROUND-HeroicScenario")
 		else
