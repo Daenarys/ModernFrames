@@ -48,6 +48,8 @@ end)
 
 hooksecurefunc(ObjectiveTrackerFrame, "Update", function()
 	for _, tracker in pairs(trackers) do
+		tracker.Header.MinimizeButton:SetSize(15, 14)
+		tracker.Header.MinimizeButton:SetPoint("RIGHT")
 		tracker.Header.MinimizeButton:SetNormalTexture("Interface/QuestFrame/QuestTracker")
 		tracker.Header.MinimizeButton:SetPushedTexture("Interface/QuestFrame/QuestTracker")
 		tracker.Header.MinimizeButton:SetHighlightAtlas("UI-QuestTrackerButton-Highlight", "ADD")

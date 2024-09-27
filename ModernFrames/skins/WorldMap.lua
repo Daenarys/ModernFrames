@@ -34,6 +34,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	end
 
 	if style == POIButtonUtil.Style.BonusObjective then
+		-- QuestBonusObjective
 		poiButton.Display:SetAlpha(0)
 		poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 		poiButton:GetNormalTexture():SetTexCoord(0.807617, 0.838867, 0.331055, 0.362305)
@@ -53,6 +54,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 			poiButton.HighlightTexture:SetTexture("Interface\\WorldMap\\UI-QuestPoi-NumberIcons")
 			poiButton.HighlightTexture:SetTexCoord(0.625, 0.750, 0.375, 0.5)
 			if info.quality == Enum.WorldQuestQuality.Rare then
+				--worldquest-questmarker-rare
 				poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
 				poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.177734, 0.216797)
 				poiButton:GetNormalTexture():SetSize(18, 18)
@@ -67,6 +69,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 					poiButton.SelectedGlow:Hide()
 				end
 			elseif info.quality == Enum.WorldQuestQuality.Epic then
+				--worldquest-questmarker-epic
 				poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
 				poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.0917969, 0.130859)
 				poiButton:GetNormalTexture():SetSize(18, 18)
@@ -92,6 +95,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 				end
 			end
 			if info.isElite then
+				--worldquest-questmarker-dragon
 				poiButton.UnderlayAtlas:SetSize(34, 34)
 				poiButton.UnderlayAtlas:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
 				poiButton.UnderlayAtlas:SetTexCoord(0.548828, 0.673828, 0.435547, 0.560547)
@@ -210,10 +214,10 @@ end)
 hooksecurefunc(VignettePinMixin, "OnAcquired", function(self)
 	if self.Texture then
 		if (self.Texture:GetAtlas() == "VignetteEvent") then
-			self.Texture:SetSize(32, 32)
+			self.Texture:SetSize(24, 24)
 			self.Texture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.Texture:SetTexCoord(0.608398, 0.639648, 0.397461, 0.428711)
-			self.HighlightTexture:SetSize(32, 32)
+			self.HighlightTexture:SetSize(24, 24)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.608398, 0.639648, 0.397461, 0.428711)
 		elseif (self.Texture:GetAtlas() == "VignetteEventElite") then
@@ -224,10 +228,10 @@ hooksecurefunc(VignettePinMixin, "OnAcquired", function(self)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.641602, 0.672852, 0.397461, 0.428711)
 		elseif (self.Texture:GetAtlas() == "VignetteKill") then
-			self.Texture:SetSize(32, 32)
+			self.Texture:SetSize(24, 24)
 			self.Texture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.Texture:SetTexCoord(0.674805, 0.706055, 0.397461, 0.428711)
-			self.HighlightTexture:SetSize(32, 32)
+			self.HighlightTexture:SetSize(24, 24)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.674805, 0.706055, 0.397461, 0.428711)
 		elseif (self.Texture:GetAtlas() == "VignetteKillElite") then
