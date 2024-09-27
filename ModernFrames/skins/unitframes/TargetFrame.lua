@@ -13,5 +13,6 @@ hooksecurefunc(TargetFrame, "CheckClassification", function(self)
 	elseif (classification == "rareelite") then
 		bossPortraitFrameTexture:SetAtlas("UI-HUD-UnitFrame-Target-PortraitOn-Boss-Gold-Winged", TextureKitConstants.UseAtlasSize)
 		bossPortraitFrameTexture:SetPoint("TOPRIGHT", 8, -7)
+	end
 	self.TargetFrameContent.TargetFrameContentContextual.BossIcon:Hide()
 end)
