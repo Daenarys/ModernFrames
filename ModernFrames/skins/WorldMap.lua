@@ -105,10 +105,10 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 		poiButton.Display:SetAlpha(0)
 		poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 		poiButton:GetNormalTexture():SetTexCoord(0.0654297, 0.12793, 0.643555, 0.706055)
-		poiButton:GetNormalTexture():SetSize(26, 26)
+		poiButton:GetNormalTexture():SetSize(24, 24)
 		poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 		poiButton:GetPushedTexture():SetTexCoord(0.0654297, 0.12793, 0.643555, 0.706055)
-		poiButton:GetPushedTexture():SetSize(26, 26)
+		poiButton:GetPushedTexture():SetSize(24, 24)
 		if poiButton.SubTypeIcon then
 			poiButton.SubTypeIcon:SetAlpha(0)
 		end
