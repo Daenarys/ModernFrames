@@ -33,7 +33,7 @@ for _, tracker in pairs(trackers) do
 
 		if not bar.BorderMid then
 			bar:ClearAllPoints()
-			bar:SetPoint("LEFT", -1, 0)
+			bar:SetPoint("LEFT", -10, 5)
 		end
 	end)
 end
