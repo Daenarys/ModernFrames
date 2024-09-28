@@ -73,9 +73,9 @@ end)
 
 hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateStageBlock", function(block)
 	if (block.NormalBG:GetAtlas() == "evergreen-scenario-trackerheader") then
-		block.NormalBG:SetAtlas("ScenarioTrackerToast", true)
+		block.NormalBG:SetWidth(257)
 		block.NormalBG:ClearAllPoints()
-		block.NormalBG:SetPoint("TOPLEFT", -11, -2)
+		block.NormalBG:SetPoint("TOPLEFT", -18, 1)
 	elseif (block.NormalBG:GetAtlas() == "thewarwithin-scenario-trackerheader") then
 		block.NormalBG:SetWidth(257)
 		block.NormalBG:ClearAllPoints()
