@@ -57,9 +57,9 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function(self)
 	end
 end)
 
-hooksecurefunc(ScenarioObjectiveTracker, "AddBlock", function(block)
-	for _, child in next, { ScenarioObjectiveTracker.ContentsFrame:GetChildren() } do
-		if child == ScenarioObjectiveTracker.ChallengeModeBlock then
+hooksecurefunc(ScenarioObjectiveTracker, "LayoutBlock", function(block)
+	for _, child in next, { block.ContentsFrame:GetChildren() } do
+		if child == block.ChallengeModeBlock then
 			child:SetPoint("RIGHT", -12, 0)
 		else
 			child:SetPoint("LEFT", 31, 0)
