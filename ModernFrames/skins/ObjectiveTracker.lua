@@ -26,16 +26,6 @@ for _, tracker in pairs(trackers) do
 	tracker.Header.Background:SetPoint("TOPLEFT", -29, 14)
 	tracker.Header.Text:ClearAllPoints()
 	tracker.Header.Text:SetPoint("LEFT", 4, -1)
-
-	hooksecurefunc(tracker, "GetProgressBar", function(self, key)
-		local progressBar = self.usedProgressBars[key]
-		local bar = progressBar and progressBar.Bar
-
-		if not bar.BorderMid then
-			bar:ClearAllPoints()
-			bar:SetPoint("LEFT", -10, 5)
-		end
-	end)
 end
 
 if ScenarioObjectiveTracker.MawBuffsBlock.Container then
@@ -68,6 +58,16 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function()
 		else
 			child:SetPoint("LEFT", 31, 0)
 		end
+	end
+end)
+
+hooksecurefunc(WorldQuestObjectiveTracker, "GetProgressBar", function(self, key)
+	local progressBar = self.usedProgressBars[key]
+	local bar = progressBar and progressBar.Bar
+
+	if not bar.BorderMid then
+		bar:ClearAllPoints()
+		bar:SetPoint("LEFT", -10, 6)
 	end
 end)
 
