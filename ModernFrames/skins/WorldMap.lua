@@ -46,9 +46,11 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	elseif style == POIButtonUtil.Style.WorldQuest then
 		local info = C_QuestLog.GetQuestTagInfo(questID)
 		if info then
-			if (poiButton.Display.Icon:GetAtlas() == "Worldquest-icon" or poiButton.Display.Icon:GetAtlas() == "worldquest-icon-boss" ) then
+			if (poiButton.Display.Icon:GetAtlas() == "Worldquest-icon" or poiButton.Display.Icon:GetAtlas() == "worldquest-icon-boss") then
 				poiButton.Display.Icon:SetSize(6, 15)
 				poiButton.Display.Icon:SetAtlas("worldquest-questmarker-questbang")
+			elseif (poiButton.Display.Icon:GetAtlas() == "worldquest-icon-petbattle") then
+				poiButton.Display.Icon:SetSize(12, 10)
 			end
 			poiButton.HighlightTexture:SetSize(32, 32)
 			poiButton.HighlightTexture:SetTexture("Interface\\WorldMap\\UI-QuestPoi-NumberIcons")
