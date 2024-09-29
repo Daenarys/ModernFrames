@@ -24,8 +24,8 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	end
 
 	if poiButton.TimeLowFrame then
-		poiButton.TimeLowFrame:SetSize(20, 20)
-		poiButton.TimeLowFrame:SetPoint("CENTER", -8, -8)
+		poiButton.TimeLowFrame:SetSize(18, 18)
+		poiButton.TimeLowFrame:SetPoint("CENTER", -8, -7)
 	end
 
 	if poiButton.Glow then
