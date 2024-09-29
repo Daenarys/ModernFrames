@@ -61,16 +61,6 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function()
 	end
 end)
 
-hooksecurefunc(WorldQuestObjectiveTracker, "GetProgressBar", function(self, key)
-	local progressBar = self.usedProgressBars[key]
-	local bar = progressBar and progressBar.Bar
-
-	if not bar.BorderMid then
-		bar:ClearAllPoints()
-		bar:SetPoint("LEFT", -10, 6)
-	end
-end)
-
 hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateStageBlock", function(block)
 	if (block.NormalBG:GetAtlas() == "evergreen-scenario-trackerheader") then
 		block.NormalBG:SetWidth(257)
@@ -119,4 +109,24 @@ end)
 
 hooksecurefunc(ObjectiveTrackerUIWidgetContainer, "AttachToBlockAndShow", function(self)
 	self:SetPoint("TOP", -12, 0)
+end)
+
+hooksecurefunc(ScenarioObjectiveTracker, "GetProgressBar", function(self, key)
+	local progressBar = self.usedProgressBars[key]
+	local bar = progressBar and progressBar.Bar
+
+	if not bar.BorderMid then
+		bar:ClearAllPoints()
+		bar:SetPoint("LEFT")
+	end
+end)
+
+hooksecurefunc(WorldQuestObjectiveTracker, "GetProgressBar", function(self, key)
+	local progressBar = self.usedProgressBars[key]
+	local bar = progressBar and progressBar.Bar
+
+	if not bar.BorderMid then
+		bar:ClearAllPoints()
+		bar:SetPoint("LEFT", -10, 6)
+	end
 end)
