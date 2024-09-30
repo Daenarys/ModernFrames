@@ -9,10 +9,6 @@ QuestScrollFrame.BorderFrame.TopDetail:SetAlpha(0)
 QuestMapFrame.DetailsFrame.BorderFrame.TopDetail:SetAlpha(0)
 QuestMapFrame.SettingsDropdown:Hide()
 
-hooksecurefunc(QuestScrollFrame, 'UpdateBackground', function(self)
-	self.Background:SetAtlas("QuestLogBackground")
-end)
-
 hooksecurefunc('QuestLogQuests_Update', function()
 	for button in _G.QuestScrollFrame.campaignHeaderFramePool:EnumerateActive() do
 		if not button.IsSkinned then
