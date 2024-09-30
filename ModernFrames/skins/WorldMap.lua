@@ -66,7 +66,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 				if poiButton:IsSelected() then
 					poiButton.SelectedGlow:Show()
 					poiButton.SelectedGlow:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.177734, 0.216797)
+					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.220703, 0.259766)
 				else
 					poiButton.SelectedGlow:Hide()
 				end
@@ -81,7 +81,7 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 				if poiButton:IsSelected() then
 					poiButton.SelectedGlow:Show()
 					poiButton.SelectedGlow:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.0917969, 0.130859)
+					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.134766, 0.173828)
 				else
 					poiButton.SelectedGlow:Hide()
 				end
