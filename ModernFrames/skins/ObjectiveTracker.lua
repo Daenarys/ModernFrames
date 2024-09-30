@@ -45,6 +45,10 @@ for _, tracker in pairs(trackers) do
 	end)
 end
 
+if ScenarioObjectiveTracker.MawBuffsBlock.Container then
+	ScenarioObjectiveTracker.MawBuffsBlock.Container:SetPoint("TOPRIGHT", -12, 1)
+end
+
 hooksecurefunc(ObjectiveTrackerFrame, "AnchorSelectionFrame", function(self)
 	self.Selection:SetPoint("TOPLEFT", -17, -38)
 end)
@@ -73,10 +77,6 @@ end)
 hooksecurefunc(ObjectiveTrackerUIWidgetContainer, "AttachToBlockAndShow", function(self)
 	self:SetPoint("TOP", -12, 0)
 end)
-
-if ScenarioObjectiveTracker.MawBuffsBlock.Container then
-	ScenarioObjectiveTracker.MawBuffsBlock.Container:SetPoint("TOPRIGHT", -12, 1)
-end
 
 hooksecurefunc(ScenarioObjectiveTracker, "LayoutBlock", function(block)
 	for _, child in next, { block.ContentsFrame:GetChildren() } do
