@@ -85,3 +85,11 @@ hooksecurefunc('QuestLogQuests_Update', function()
 		end
 	end
 end)
+
+hooksecurefunc(QuestScrollFrame, 'UpdateBackground', function(self)
+	if (self.Background:GetAtlas() == "QuestLog-main-background") then
+		self.Background:SetAtlas("QuestLogBackground")
+	elseif (self.Background:GetAtlas() == "QuestLog-empty-quest-background") then
+		self.Background:SetAtlas("NoQuestsBackground")
+	end
+end)
