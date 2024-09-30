@@ -84,7 +84,6 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 					poiButton:GetNormalTexture():SetTexCoord(0.875, 1, 0.375, 0.5)
 					poiButton:GetPushedTexture():SetTexCoord(0.750, 0.875, 0.375, 0.5)
 				end
-				poiButton.SelectedGlow:Hide()
 			end
 			if info.isElite then
 				poiButton.UnderlayAtlas:SetSize(34, 34)
