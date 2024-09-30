@@ -34,6 +34,19 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 		poiButton:GetPushedTexture():SetTexCoord(0.807617, 0.838867, 0.331055, 0.362305)
 		poiButton:GetPushedTexture():SetSize(25, 25)
 		poiButton.HighlightTexture:SetAlpha(0)
+	elseif style == POIButtonUtil.Style.QuestThreat  then
+		poiButton:SetNormalTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+		poiButton:SetPushedTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+		if poiButton:IsSelected() then
+			poiButton:GetNormalTexture():SetTexCoord(0.500, 0.625, 0.375, 0.5)
+			poiButton:GetPushedTexture():SetTexCoord(0.375, 0.500, 0.375, 0.5)
+		else
+			poiButton:GetNormalTexture():SetTexCoord(0.875, 1, 0.375, 0.5)
+			poiButton:GetPushedTexture():SetTexCoord(0.750, 0.875, 0.375, 0.5)
+		end
+		poiButton.HighlightTexture:SetSize(32, 32)
+		poiButton.HighlightTexture:SetTexture("Interface\\WorldMap\\UI-QuestPoi-NumberIcons")
+		poiButton.HighlightTexture:SetTexCoord(0.625, 0.750, 0.375, 0.5)
 	elseif style == POIButtonUtil.Style.WorldQuest then
 		local info = C_QuestLog.GetQuestTagInfo(questID)
 		if info then
