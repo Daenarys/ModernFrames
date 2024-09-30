@@ -3,8 +3,11 @@ if QuestMapFrame.CampaignOverview.Header.BackButton then
 	QuestMapFrame.CampaignOverview.Header.BackButton:SetPoint("RIGHT", QuestMapFrame.CampaignOverview.Header.Background, "RIGHT", -10, 7)
 end
 
+QuestScrollFrame:SetPoint("TOPLEFT")
+QuestScrollFrame.SearchBox:Hide()
 QuestScrollFrame.BorderFrame.TopDetail:SetAlpha(0)
 QuestMapFrame.DetailsFrame.BorderFrame.TopDetail:SetAlpha(0)
+QuestMapFrame.SettingsDropdown:Hide()
 
 hooksecurefunc(QuestScrollFrame, 'UpdateBackground', function(self)
 	self.Background:SetAtlas("QuestLogBackground")
