@@ -15,14 +15,6 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	local style = poiButton:GetStyle()
 	local questID = poiButton:GetQuestID()
 
-	if (poiButton.SelectedGlow == nil) then
-		poiButton.SelectedGlow = poiButton:CreateTexture(nil, "OVERLAY")
-		poiButton.SelectedGlow:SetSize(18, 18)
-		poiButton.SelectedGlow:SetPoint("CENTER")
-		poiButton.SelectedGlow:SetBlendMode("ADD")
-		poiButton.SelectedGlow:Hide()
-	end
-
 	if poiButton.TimeLowFrame then
 		poiButton.TimeLowFrame:SetSize(18, 18)
 		poiButton.TimeLowFrame:SetPoint("CENTER", -8, -7)
@@ -34,7 +26,6 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	end
 
 	if style == POIButtonUtil.Style.BonusObjective then
-		-- QuestBonusObjective
 		poiButton.Display:SetAlpha(0)
 		poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 		poiButton:GetNormalTexture():SetTexCoord(0.807617, 0.838867, 0.331055, 0.362305)
@@ -56,34 +47,32 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 			poiButton.HighlightTexture:SetTexture("Interface\\WorldMap\\UI-QuestPoi-NumberIcons")
 			poiButton.HighlightTexture:SetTexCoord(0.625, 0.750, 0.375, 0.5)
 			if info.quality == Enum.WorldQuestQuality.Rare then
-				--worldquest-questmarker-rare
-				poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-				poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.177734, 0.216797)
-				poiButton:GetNormalTexture():SetSize(18, 18)
-				poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-				poiButton:GetPushedTexture():SetTexCoord(0.955078, 0.994141, 0.220703, 0.259766)
-				poiButton:GetPushedTexture():SetSize(18, 18)
 				if poiButton:IsSelected() then
-					poiButton.SelectedGlow:Show()
-					poiButton.SelectedGlow:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.220703, 0.259766)
+					poiButton:SetNormalTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+					poiButton:SetPushedTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+					poiButton:GetNormalTexture():SetTexCoord(0.500, 0.625, 0.375, 0.5)
+					poiButton:GetPushedTexture():SetTexCoord(0.375, 0.500, 0.375, 0.5)
 				else
-					poiButton.SelectedGlow:Hide()
+					poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
+					poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.177734, 0.216797)
+					poiButton:GetNormalTexture():SetSize(18, 18)
+					poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
+					poiButton:GetPushedTexture():SetTexCoord(0.955078, 0.994141, 0.220703, 0.259766)
+					poiButton:GetPushedTexture():SetSize(18, 18)
 				end
 			elseif info.quality == Enum.WorldQuestQuality.Epic then
-				--worldquest-questmarker-epic
-				poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-				poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.0917969, 0.130859)
-				poiButton:GetNormalTexture():SetSize(18, 18)
-				poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-				poiButton:GetPushedTexture():SetTexCoord(0.955078, 0.994141, 0.134766, 0.173828)
-				poiButton:GetPushedTexture():SetSize(18, 18)
 				if poiButton:IsSelected() then
-					poiButton.SelectedGlow:Show()
-					poiButton.SelectedGlow:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
-					poiButton.SelectedGlow:SetTexCoord(0.955078, 0.994141, 0.134766, 0.173828)
+					poiButton:SetNormalTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+					poiButton:SetPushedTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
+					poiButton:GetNormalTexture():SetTexCoord(0.500, 0.625, 0.375, 0.5)
+					poiButton:GetPushedTexture():SetTexCoord(0.375, 0.500, 0.375, 0.5)
 				else
-					poiButton.SelectedGlow:Hide()
+					poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
+					poiButton:GetNormalTexture():SetTexCoord(0.955078, 0.994141, 0.0917969, 0.130859)
+					poiButton:GetNormalTexture():SetSize(18, 18)
+					poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
+					poiButton:GetPushedTexture():SetTexCoord(0.955078, 0.994141, 0.134766, 0.173828)
+					poiButton:GetPushedTexture():SetSize(18, 18)
 				end
 			else
 				poiButton:SetNormalTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
@@ -98,7 +87,6 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 				poiButton.SelectedGlow:Hide()
 			end
 			if info.isElite then
-				--worldquest-questmarker-dragon
 				poiButton.UnderlayAtlas:SetSize(34, 34)
 				poiButton.UnderlayAtlas:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\WorldQuest")
 				poiButton.UnderlayAtlas:SetTexCoord(0.548828, 0.673828, 0.435547, 0.560547)
