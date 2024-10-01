@@ -1,10 +1,6 @@
 if not _G.CharacterFrame then return end
 
-CharacterFrame.Background:Hide()
 ReputationFrame.filterDropdown:Hide()
-
-TokenFrame.CurrencyTransferLogToggleButton:ClearAllPoints()
-TokenFrame.CurrencyTransferLogToggleButton:SetPoint("TOPRIGHT", -11, -32)
 
 if (ReputationFrame.FactionLabel == nil) then
 	ReputationFrame.FactionLabel = ReputationFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
@@ -16,6 +12,9 @@ if (ReputationFrame.StandingLabel == nil) then
 	ReputationFrame.StandingLabel:SetText(STANDING)
 	ReputationFrame.StandingLabel:SetPoint("TOPLEFT", 215, -42)
 end
+
+TokenFrame.CurrencyTransferLogToggleButton:ClearAllPoints()
+TokenFrame.CurrencyTransferLogToggleButton:SetPoint("TOPRIGHT", -11, -32)
 
 hooksecurefunc(CharacterFrame, "UpdatePortrait", function(self)
 	self:SetPortraitToSpecIcon()
