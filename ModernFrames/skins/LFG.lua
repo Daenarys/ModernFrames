@@ -2,10 +2,6 @@ if not _G.PVEFrame then return end
 
 ScenarioQueueFrameRandomScrollFrame.ScrollBar:SetAlpha(0)
 
-LFDQueueFrameTypeDropdown.Text:SetFontObject(GameFontHighlightSmall)
-RaidFinderQueueFrameSelectionDropdown.Text:SetFontObject(GameFontHighlightSmall)
-ScenarioQueueFrameTypeDropdown.Text:SetFontObject(GameFontHighlightSmall)
-
 hooksecurefunc('LFGDungeonReadyPopup_Update', function()
 	local proposalExists, id, typeID, subtypeID, name, backgroundTexture, role, hasResponded, totalEncounters, completedEncounters, numMembers, isLeader, _, _, isSilent = GetLFGProposal()
 	
