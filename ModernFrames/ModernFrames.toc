@@ -29,6 +29,7 @@ skins\PVP.lua
 skins\QuestLog.lua
 skins\Quests.lua
 skins\SettingsPanel.lua
+skins\Subscription.lua
 skins\TimeManager.lua
 skins\Wardrobe.lua
 skins\WorldMap.lua
