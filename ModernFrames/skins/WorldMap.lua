@@ -30,6 +30,9 @@ Tracking:HookScript("OnMouseUp", function(self)
 end)
 MapLegend:Hide()
 
+DungeonEntrancePinMixin.GetTooltipInstructions = nil
+MapLinkPinMixin.GetTooltipInstructions = nil
+
 hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 	local style = poiButton:GetStyle()
 	local questID = poiButton:GetQuestID()
