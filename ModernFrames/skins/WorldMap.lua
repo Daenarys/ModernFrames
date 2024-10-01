@@ -214,6 +214,7 @@ hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
 			self.HighlightTexture:SetSize(25, 25)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.000976562, 0.0634766, 0.12793, 0.19043)
+			self:SetMouseClickEnabled(true)
 		elseif (self.Texture:GetAtlas() == "CaveUnderground-Up") then
 			self.Texture:SetSize(25, 25)
 			self.Texture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
@@ -221,6 +222,7 @@ hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
 			self.HighlightTexture:SetSize(25, 25)
 			self.HighlightTexture:SetTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
 			self.HighlightTexture:SetTexCoord(0.000976562, 0.0634766, 0.192383, 0.254883)
+			self:SetMouseClickEnabled(true)
 		-- vignettes
 		elseif (self.Texture:GetAtlas() == "VignetteEvent") then
 			self.Texture:SetSize(32, 32)
