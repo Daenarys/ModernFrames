@@ -1,3 +1,5 @@
+if not _G.QuestScrollFrame then return end
+
 if QuestMapFrame.CampaignOverview.Header.BackButton then
 	QuestMapFrame.CampaignOverview.Header.BackButton:ClearAllPoints()
 	QuestMapFrame.CampaignOverview.Header.BackButton:SetPoint("RIGHT", QuestMapFrame.CampaignOverview.Header.Background, "RIGHT", -10, 7)
