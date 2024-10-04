@@ -23,6 +23,7 @@ skins\Loot.xml
 skins\Macro.lua
 skins\Merchant.lua
 skins\Minimap.lua
+skins\ModelPreview.lua
 skins\ObjectiveTracker.lua
 skins\PlayerChoice.lua
 skins\PVP.lua
