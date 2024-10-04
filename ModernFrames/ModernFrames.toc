@@ -34,5 +34,5 @@ skins\Subscription.lua
 skins\TimeManager.lua
 skins\Wardrobe.lua
 skins\WorldMap.lua
-skins\unitframes\TargetFrame.lua
 skins\unitframes\NamePlate.lua
+skins\unitframes\TargetFrame.lua
