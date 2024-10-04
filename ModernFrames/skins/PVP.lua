@@ -158,6 +158,9 @@ f:SetScript("OnEvent", function(self, event, name)
 			self.WeeklyChest:Show()
 			Tier:SetPoint("TOP", self.WeeklyChest, "BOTTOM", 0, -90)
 		end)
+
+		PVPQueueFrame.HonorInset.RatedPanel.Tier:SetSize(50, 50)
+		PVPQueueFrame.HonorInset.RatedPanel.Tier.Icon:SetSize(50, 50)
 	end
 end)
 
