@@ -45,19 +45,6 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 			elseif (poiButton.Display.Icon:GetAtlas() == "worldquest-icon-race") then
 				poiButton.Display.Icon:SetSize(17, 14)
 			end
-			if info.quality == Enum.WorldQuestQuality.Rare then
-				if poiButton:IsSelected() then
-					poiButton:SetNormalTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
-					poiButton:SetPushedTexture("Interface/WorldMap/UI-QuestPoi-NumberIcons")
-					poiButton:GetNormalTexture():SetTexCoord(0.500, 0.625, 0.375, 0.5)
-					poiButton:GetPushedTexture():SetTexCoord(0.375, 0.500, 0.375, 0.5)
-				else
-					poiButton.NormalTexture:SetSize(18, 18)
-					poiButton.NormalTexture:SetSize(18, 18)
-					poiButton.NormalTexture:SetAtlas("worldquest-questmarker-rare")
-					poiButton.PushedTexture:SetAtlas("worldquest-questmarker-rare-down")
-				end
-			end
 		end
 	elseif style == POIButtonUtil.Style.AreaPOI then
 		poiButton.Display.Icon:SetAtlas("UI-EventPoi-Horn-big")
