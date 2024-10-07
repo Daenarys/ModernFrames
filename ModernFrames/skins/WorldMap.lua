@@ -25,7 +25,16 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 		poiButton.Glow:SetTexture("Interface\\WorldMap\\UI-QuestPoi-IconGlow")
 	end
 
-	if style == POIButtonUtil.Style.QuestThreat  then
+	if style == POIButtonUtil.Style.BonusObjective then
+		poiButton.Display:SetAlpha(0)
+		poiButton:SetNormalTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+		poiButton:GetNormalTexture():SetTexCoord(0.807617, 0.838867, 0.331055, 0.362305)
+		poiButton:GetNormalTexture():SetSize(25, 25)
+		poiButton:SetPushedTexture("Interface\\AddOns\\ModernFrames\\icons\\ObjectIconsAtlas")
+		poiButton:GetPushedTexture():SetTexCoord(0.807617, 0.838867, 0.331055, 0.362305)
+		poiButton:GetPushedTexture():SetSize(25, 25)
+		poiButton.HighlightTexture:SetAlpha(0)
+	elseif style == POIButtonUtil.Style.QuestThreat  then
 		if poiButton:IsSelected() then
 			poiButton.NormalTexture:SetAtlas("UI-QuestPoi-QuestNumber-SuperTracked")
 			poiButton.PushedTexture:SetAtlas("UI-QuestPoi-QuestNumber-Pressed-SuperTracked")
