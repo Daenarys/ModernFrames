@@ -60,7 +60,6 @@ f:SetScript("OnEvent", function(self, event, name)
 				if not ConquestFrame_HasActiveSeason() or InCombatLockdown() then
 					return
 				end
-
 				WeeklyRewardMixin.OnMouseUp(self, ...)
 			end)
 		end
@@ -115,7 +114,6 @@ f:SetScript("OnEvent", function(self, event, name)
 
 			if (PVPQueueFrame.HonorInset.RatedPanel.Label == nil) then
 				PVPQueueFrame.HonorInset.RatedPanel.Label = PVPQueueFrame.HonorInset.RatedPanel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-				PVPQueueFrame.HonorInset.RatedPanel.Label:SetText(RATED_PVP_WEEKLY_CHEST)
 				PVPQueueFrame.HonorInset.RatedPanel.Label:SetPoint("TOP", 0, -12)
 				PVPQueueFrame.HonorInset.RatedPanel.Label:Hide()
 			end
@@ -148,7 +146,6 @@ f:SetScript("OnEvent", function(self, event, name)
 				if not ConquestFrame_HasActiveSeason() or InCombatLockdown() then
 					return
 				end
-
 				WeeklyRewardMixin.OnMouseUp(self, ...)
 			end)
 		end
@@ -156,13 +153,21 @@ f:SetScript("OnEvent", function(self, event, name)
 		PVPQueueFrame.HonorInset.RatedPanel:HookScript("OnShow", function(self)
 			local Tier = self.Tier
 			local Label = self.Label
-			Label:SetText(RATED_PVP_WEEKLY_VAULT)
-			Label:Show()
-			self.HonorLevelDisplay:Hide()
-			self.WeeklyChest:Show()
-			Tier:SetPoint("TOP", self.WeeklyChest, "BOTTOM", 0, -90)
+			local serverExpansionLevel = GetServerExpansionLevel()
+			local maxLevel = GetMaxLevelForExpansionLevel(serverExpansionLevel)
+			local playerLevel = UnitLevel("player")
+			if playerLevel < maxLevel then
+				Label:Hide()
+				self.HonorLevelDisplay:Show()
+				self.WeeklyChest:Hide()
+			else
+				Label:SetText(RATED_PVP_WEEKLY_VAULT)
+				Label:Show()
+				self.HonorLevelDisplay:Hide()
+				self.WeeklyChest:Show()
+			end
 		end)
-
+		PVPQueueFrame.HonorInset.RatedPanel.Tier:SetPoint("TOP", PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest, "BOTTOM", 0, -90)
 		PVPQueueFrame.HonorInset.RatedPanel.Tier:SetSize(50, 50)
 		PVPQueueFrame.HonorInset.RatedPanel.Tier.Icon:SetSize(50, 50)
 	end
