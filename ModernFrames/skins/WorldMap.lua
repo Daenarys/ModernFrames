@@ -53,3 +53,35 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 		end
 	end
 end)
+
+hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
+	if self.Texture then
+		-- taxis
+		if (self.Texture:GetAtlas() == "TaxiNode_Alliance") then
+			self.Texture:SetSize(18, 18)
+			self.HighlightTexture:SetSize(18, 18)
+		elseif (self.Texture:GetAtlas() == "TaxiNode_Horde") then
+			self.Texture:SetSize(18, 18)
+			self.HighlightTexture:SetSize(18, 18)
+		elseif (self.Texture:GetAtlas() == "TaxiNode_Neutral") then
+			self.Texture:SetSize(18, 18)
+			self.HighlightTexture:SetSize(18, 18)
+		elseif (self.Texture:GetAtlas() == "TaxiNode_Undiscovered") then
+			self.Texture:SetSize(18, 18)
+			self.HighlightTexture:SetSize(18, 18)
+		-- vignettes
+		elseif (self.Texture:GetAtlas() == "vignettekillboss") then
+			self.Texture:SetAtlas("legioninvasion-map-icon-portal", true)
+			self.HighlightTexture:SetAtlas("legioninvasion-map-icon-portal", true)
+		end
+	end
+end)
+
+hooksecurefunc(VignettePinMixin, "OnAcquired", function(self)
+	if self.Texture then
+		if (self.Texture:GetAtlas() == "vignettekillboss") then
+			self.Texture:SetAtlas("legioninvasion-map-icon-portal", true)
+			self.HighlightTexture:SetAtlas("legioninvasion-map-icon-portal", true)
+		end
+	end
+end)
