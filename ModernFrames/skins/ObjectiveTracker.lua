@@ -44,10 +44,16 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function(self)
 	end
 	local prevModule = nil
 	for i, module in ipairs(self.modules) do
-		if not prevModule then
-			module:SetPoint("TOP", 0, 0)
+		local heightUsed = module:GetContentsHeight()
+		if heightUsed > 0 then
+			module:ClearAllPoints()
+			if prevModule then
+				module:SetPoint("TOP", prevModule, "BOTTOM", 0, -self.moduleSpacing)
+			else
+				module:SetPoint("TOP")
+			end
+			prevModule = module
 		end
-		prevModule = module
 	end
 end)
 
