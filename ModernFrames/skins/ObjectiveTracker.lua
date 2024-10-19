@@ -32,7 +32,7 @@ for _, tracker in pairs(trackers) do
 	tracker.Header.Background:SetSize(290, 35)
 	tracker.Header.Background:SetPoint("CENTER", 0, 1)
 	tracker.Header.Text:SetPoint("LEFT", 14, 0)
-	tracker.Header.MinimizeButton:SetSize(16, 17)
+	tracker.Header.MinimizeButton:SetSize(15, 16)
 	tracker.Header.MinimizeButton:SetPoint("RIGHT", -8, 1)
 	tracker.Header.MinimizeButton:SetHighlightAtlas("UI-QuestTrackerButton-Red-Highlight", "ADD")
 	SetCollapsed(tracker.Header, _G.ObjectiveTrackerFrame.isCollapsed)
