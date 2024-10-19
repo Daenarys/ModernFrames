@@ -28,11 +28,12 @@ local trackers = {
 }
 
 for _, tracker in pairs(trackers) do
-	tracker.Header.Background:SetAtlas("Objective-Header", true)
-	tracker.Header.Background:SetPoint("TOPLEFT", -19, 14)
+	tracker.Header.Background:SetAtlas("UI-QuestTracker-Primary-Objective-Header")
+	tracker.Header.Background:SetSize(290, 35)
+	tracker.Header.Background:SetPoint("CENTER", 0, 1)
 	tracker.Header.Text:SetPoint("LEFT", 14, 0)
-	tracker.Header.MinimizeButton:SetSize(15, 14)
-	tracker.Header.MinimizeButton:SetPoint("RIGHT", -15, 0)
+	tracker.Header.MinimizeButton:SetSize(16, 17)
+	tracker.Header.MinimizeButton:SetPoint("RIGHT", -8, 1)
 	tracker.Header.MinimizeButton:SetHighlightAtlas("UI-QuestTrackerButton-Red-Highlight", "ADD")
 	SetCollapsed(tracker.Header, _G.ObjectiveTrackerFrame.isCollapsed)
 	hooksecurefunc(tracker.Header, 'SetCollapsed', SetCollapsed)
@@ -46,7 +47,6 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function(self)
 	for i, module in ipairs(self.modules) do
 		local heightUsed = module:GetContentsHeight()
 		if heightUsed > 0 then
-			module:ClearAllPoints()
 			if prevModule then
 				module:SetPoint("TOP", prevModule, "BOTTOM", 0, -self.moduleSpacing)
 			else
@@ -55,20 +55,6 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update", function(self)
 			prevModule = module
 		end
 	end
-end)
-
-hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateStageBlock", function(block)
-	if (block.NormalBG:GetAtlas() == "evergreen-scenario-trackerheader") then
-		block.NormalBG:SetAtlas("ScenarioTrackerToast", true)
-	elseif (block.NormalBG:GetAtlas() == "thewarwithin-scenario-trackerheader") then
-		block.NormalBG:SetAtlas("dragonflight-scenario-TrackerHeader", true)
-	elseif (block.NormalBG:GetAtlas() == "delves-scenario-TrackerHeader") then
-		block.NormalBG:SetAtlas("dragonflight-scenario-TrackerHeader", true)
-	end
-	block.NormalBG:SetPoint("TOPLEFT", 0, -1)
-	block.FinalBG:SetAtlas("ScenarioTrackerToast-FinalFiligree", true)
-	block.FinalBG:ClearAllPoints()
-	block.FinalBG:SetPoint("TOPLEFT", 4, -5)
 end)
 
 hooksecurefunc(ScenarioObjectiveTracker.StageBlock, "UpdateWidgetRegistration", function(block)
