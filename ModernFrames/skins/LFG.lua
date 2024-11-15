@@ -1,7 +1,5 @@
 if not _G.PVEFrame then return end
 
-ScenarioQueueFrameRandomScrollFrame.ScrollBar:SetAlpha(0)
-
 hooksecurefunc('LFGDungeonReadyPopup_Update', function()
 	local proposalExists, id, typeID, subtypeID, name, backgroundTexture, role, hasResponded, totalEncounters, completedEncounters, numMembers, isLeader, _, _, isSilent = GetLFGProposal()
 	
@@ -14,6 +12,36 @@ hooksecurefunc('LFGDungeonReadyPopup_Update', function()
 		end
 	end
 end)
+
+hooksecurefunc('LFGListGroupDataDisplayEnumerate_Update', function(self, numPlayers, displayData, disabled, iconOrder)
+	local LFG_LIST_GROUP_DATA_ATLASES = {
+		TANK = "groupfinder-icon-role-large-tank",
+		HEALER = "groupfinder-icon-role-large-heal",
+		DAMAGER = "groupfinder-icon-role-large-dps",
+	};
+
+	--Note that icons are numbered from right to left
+	if iconOrder == LFG_LIST_GROUP_DATA_ROLE_ORDER then
+		local iconIndex = numPlayers;
+		for i=1, #iconOrder do
+			local role = iconOrder[i];
+			for j=1, displayData[iconOrder[i]] do
+				local icon = self.Icons[iconIndex];
+				icon.RoleIconWithBackground:Hide()
+				icon.RoleIcon:Show()
+				icon.RoleIcon:SetSize(18, 18)
+				icon.RoleIcon:SetAtlas(LFG_LIST_GROUP_DATA_ATLASES[role], false)
+				icon.ClassCircle:Hide()
+				iconIndex = iconIndex - 1;
+				if ( iconIndex < 1 ) then
+					return;
+				end
+			end
+		end
+	end
+end)
+
+ScenarioQueueFrameRandomScrollFrame.ScrollBar:SetAlpha(0)
 
 hooksecurefunc("ScenarioQueueFrameRandom_UpdateFrame", function()
 	local dungeonID = ScenarioQueueFrame.type
@@ -41,31 +69,9 @@ hooksecurefunc("GroupFinderFrame_EvaluateButtonVisibility", function(self)
 	end
 end)
 
-hooksecurefunc('LFGListGroupDataDisplayEnumerate_Update', function(self, numPlayers, displayData, disabled, iconOrder)
-	local LFG_LIST_GROUP_DATA_ATLASES = {
-		["TANK"] = "UI-LFG-RoleIcon-Tank-Micro-GroupFinder",
-		["HEALER"] = "UI-LFG-RoleIcon-Healer-Micro-GroupFinder",
-		["DAMAGER"] = "UI-LFG-RoleIcon-DPS-Micro-GroupFinder",
-	}
-
-	--Note that icons are numbered from right to left
-	if iconOrder == LFG_LIST_GROUP_DATA_ROLE_ORDER then
-		local iconIndex = numPlayers
-		for i=1, #iconOrder do
-			local role = iconOrder[i]
-			for j=1, displayData[iconOrder[i]] do
-				local icon = self.Icons[iconIndex]
-				icon:SetAlpha(disabled and 0.5 or 0.70)
-				icon.RoleIconWithBackground:Hide()
-				icon.RoleIcon:Show()
-				icon.RoleIcon:SetSize(18, 18)
-				icon.RoleIcon:SetAtlas(LFG_LIST_GROUP_DATA_ATLASES[role], false)
-				icon.ClassCircle:Hide()
-				iconIndex = iconIndex - 1
-				if ( iconIndex < 1 ) then
-					return
-				end
-			end
-		end
+hooksecurefunc("LFGRewardsFrame_UpdateFrame", function(parentFrame, dungeonID)
+	if (dungeonID == 2634) then
+		parentFrame.title:SetText(LFG_TYPE_RANDOM_TIMEWALKER_DUNGEON)
+		parentFrame.description:SetText(LFD_TIMEWALKER_RANDOM_EXPLANATION)
 	end
 end)

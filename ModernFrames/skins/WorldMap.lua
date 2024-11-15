@@ -25,7 +25,12 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 		poiButton.Glow:SetTexture("Interface\\WorldMap\\UI-QuestPoi-IconGlow")
 	end
 
-	if style == POIButtonUtil.Style.QuestThreat  then
+	if poiButton.LinkGlow then
+		poiButton.LinkGlow:SetSize(45, 45)
+		poiButton.LinkGlow:SetTexture("Interface\\WorldMap\\UI-QuestPoi-IconGlow")
+	end
+
+	if style == POIButtonUtil.Style.QuestThreat then
 		if poiButton:IsSelected() then
 			poiButton.NormalTexture:SetAtlas("UI-QuestPoi-QuestNumber-SuperTracked")
 			poiButton.PushedTexture:SetAtlas("UI-QuestPoi-QuestNumber-Pressed-SuperTracked")
@@ -47,9 +52,8 @@ hooksecurefunc(POIButtonMixin, "UpdateButtonStyle", function(poiButton)
 			end
 		end
 	elseif style == POIButtonUtil.Style.AreaPOI then
-		poiButton.Display.Icon:SetAtlas("UI-EventPoi-Horn-big")
-		if poiButton.SubTypeIcon then
-			poiButton.SubTypeIcon:SetAlpha(0)
+		if poiButton.Display.SubTypeIcon then
+			poiButton.Display.SubTypeIcon:SetAlpha(0)
 		end
 	end
 end)
@@ -69,19 +73,6 @@ hooksecurefunc(BaseMapPoiPinMixin, "OnAcquired", function(self)
 		elseif (self.Texture:GetAtlas() == "TaxiNode_Undiscovered") then
 			self.Texture:SetSize(18, 18)
 			self.HighlightTexture:SetSize(18, 18)
-		-- vignettes
-		elseif (self.Texture:GetAtlas() == "vignettekillboss") then
-			self.Texture:SetAtlas("legioninvasion-map-icon-portal", true)
-			self.HighlightTexture:SetAtlas("legioninvasion-map-icon-portal", true)
-		end
-	end
-end)
-
-hooksecurefunc(VignettePinMixin, "OnAcquired", function(self)
-	if self.Texture then
-		if (self.Texture:GetAtlas() == "vignettekillboss") then
-			self.Texture:SetAtlas("legioninvasion-map-icon-portal", true)
-			self.HighlightTexture:SetAtlas("legioninvasion-map-icon-portal", true)
 		end
 	end
 end)

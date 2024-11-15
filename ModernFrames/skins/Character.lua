@@ -13,8 +13,9 @@ if (ReputationFrame.StandingLabel == nil) then
 	ReputationFrame.StandingLabel:SetPoint("TOPLEFT", 215, -42)
 end
 
-TokenFrame.CurrencyTransferLogToggleButton:ClearAllPoints()
-TokenFrame.CurrencyTransferLogToggleButton:SetPoint("TOPRIGHT", -11, -32)
+ReputationFrame.filterDropdown:Hide()
+TokenFrame.CurrencyTransferLogToggleButton:Hide()
+TokenFrame.filterDropdown:Hide()
 
 hooksecurefunc(CharacterFrame, "UpdatePortrait", function(self)
 	self:SetPortraitToSpecIcon()

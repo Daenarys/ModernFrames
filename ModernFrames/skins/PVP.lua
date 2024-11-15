@@ -20,16 +20,16 @@ f:SetScript("OnEvent", function(self, event, name)
 
 			if (PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.ChestTexture == nil) then
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.ChestTexture = PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest:CreateTexture(nil, "ARTWORK")
-				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.ChestTexture:SetScale(0.5)
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.ChestTexture:SetPoint("CENTER")
+				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.ChestTexture:SetScale(0.5)
 			end
 
 			if (PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight == nil) then
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight = PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest:CreateTexture(nil, "HIGHLIGHT")
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight:SetBlendMode("ADD")
-				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight:SetScale(0.5)
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight:SetAlpha(0.2)
 				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight:SetPoint("CENTER")
+				PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest.Highlight:SetScale(0.5)
 			end
 
 			if C_WeeklyRewards.HasAvailableRewards() then
@@ -55,7 +55,6 @@ f:SetScript("OnEvent", function(self, event, name)
 				GameTooltip:Show()
 			end)
 			PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest:SetScript("OnLeave", GameTooltip_Hide)
-
 			PVPQueueFrame.HonorInset.CasualPanel.WeeklyChest:SetScript("OnMouseUp", function(self, ...)
 				if not ConquestFrame_HasActiveSeason() or InCombatLockdown() then
 					return
@@ -65,11 +64,8 @@ f:SetScript("OnEvent", function(self, event, name)
 		end
 
 		PVPQueueFrame.HonorInset.CasualPanel:HookScript("OnShow", function(self)
-			local serverExpansionLevel = GetServerExpansionLevel()
-			local maxLevel = GetMaxLevelForExpansionLevel(serverExpansionLevel)
-			local playerLevel = UnitLevel("player")
 			local Label = self.HKLabel
-			if playerLevel < maxLevel then
+			if(UnitLevel("player") < GetMaxLevelForExpansionLevel(LE_EXPANSION_WAR_WITHIN)) then
 				Label:Hide()
 				self.WeeklyChest:Hide()
 				self.HonorLevelDisplay:SetPoint("TOP", 0, -25)
@@ -100,16 +96,16 @@ f:SetScript("OnEvent", function(self, event, name)
 
 			if (PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.ChestTexture == nil) then
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.ChestTexture = PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest:CreateTexture(nil, "ARTWORK")
-				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.ChestTexture:SetScale(0.5)
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.ChestTexture:SetPoint("CENTER")
+				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.ChestTexture:SetScale(0.5)
 			end
 
 			if (PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight == nil) then
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight = PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest:CreateTexture(nil, "HIGHLIGHT")
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight:SetBlendMode("ADD")
-				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight:SetScale(0.5)
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight:SetAlpha(0.2)
 				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight:SetPoint("CENTER")
+				PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest.Highlight:SetScale(0.5)
 			end
 
 			if (PVPQueueFrame.HonorInset.RatedPanel.Label == nil) then
@@ -141,7 +137,6 @@ f:SetScript("OnEvent", function(self, event, name)
 				GameTooltip:Show()
 			end)
 			PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest:SetScript("OnLeave", GameTooltip_Hide)
-
 			PVPQueueFrame.HonorInset.RatedPanel.WeeklyChest:SetScript("OnMouseUp", function(self, ...)
 				if not ConquestFrame_HasActiveSeason() or InCombatLockdown() then
 					return
@@ -153,10 +148,7 @@ f:SetScript("OnEvent", function(self, event, name)
 		PVPQueueFrame.HonorInset.RatedPanel:HookScript("OnShow", function(self)
 			local Tier = self.Tier
 			local Label = self.Label
-			local serverExpansionLevel = GetServerExpansionLevel()
-			local maxLevel = GetMaxLevelForExpansionLevel(serverExpansionLevel)
-			local playerLevel = UnitLevel("player")
-			if playerLevel < maxLevel then
+			if(UnitLevel("player") < GetMaxLevelForExpansionLevel(LE_EXPANSION_WAR_WITHIN)) then
 				Label:Hide()
 				self.HonorLevelDisplay:Show()
 				self.WeeklyChest:Hide()

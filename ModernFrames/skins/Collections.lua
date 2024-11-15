@@ -3,7 +3,6 @@ f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, name)
 	if name == "Blizzard_Collections" then
 		hooksecurefunc("MountJournal_InitMountButton", function(button)
-			button.SteadyFlightLabel:Hide()
 			button.name:SetSize(147, 25)
 			button.name:ClearAllPoints()
 			button.name:SetPoint("TOPLEFT", button.icon, "TOPRIGHT", 10, -5)
